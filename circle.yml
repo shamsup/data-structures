@@ -1,0 +1,22 @@
+machine:
+  environment:
+    DOWNSTREAM: hackreactor/data-structures
+dependencies:
+  pre:
+    - npm install -g git+https://github.com/reactorcore/problemify.git
+    - git clone git@github.com:reactorcore/utils.scripts.git ../scripts
+    - npm install -g mocha
+    - npm install -g phantomjs
+
+    # Versions newer than 3.3.0 throw not-yet-understood errors
+    - npm install -g mocha-phantomjs@3.3.0
+test:
+  override:
+#    - mocha-phantomjs --no-colors --reporter min  sprint-one/SpecRunner.html
+    - mocha-phantomjs --reporter min sprint-two/SpecRunner.html
+deployment:
+  master:
+    branch: master
+    commands:
+      # - ../scripts/circle-ci/deploy/checkout-latest-tag.sh
+      - ../scripts/circle-ci/deploy/publish-to-hackreactor.sh
