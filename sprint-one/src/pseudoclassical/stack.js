@@ -18,7 +18,7 @@ Stack.prototype.pop = function() {
     return;
   }
 
-  var result = this.storage[this.count-1];
+  var result = this.storage[this.count - 1];
   delete this.storage[this.count - 1];
   this.count -= 1;
   return result;

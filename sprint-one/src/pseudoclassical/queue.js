@@ -5,7 +5,7 @@ var Queue = function() {
   this.storage = {};
 };
 
-Queue.prototype.size  = function() {
+Queue.prototype.size = function() {
   return this.count;
 };
 
