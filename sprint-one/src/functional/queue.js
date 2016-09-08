@@ -9,7 +9,7 @@ var Queue = function() {
 
   // Implement the methods below
 
-  someInstance.enqueue = function(value) {
+  someInstance.enqueue = function (value) {
 
     storage[maxKey] = value;
     maxKey += 1;
@@ -17,7 +17,7 @@ var Queue = function() {
     return size;
   };
 
-  someInstance.dequeue = function() {
+  someInstance.dequeue = function () {
     if (size === 0) {
       return;
     }
@@ -28,7 +28,7 @@ var Queue = function() {
     return result;
   };
 
-  someInstance.size = function() {
+  someInstance.size = function () {
     return size;
   };
 

@@ -31,7 +31,7 @@ var queueMethods = {
 
     return result;
   },
-  size: function() {
+  size: function () {
     return this.count;
   }
 };
