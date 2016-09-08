@@ -12,7 +12,7 @@ var Stack = function() {
 var stackMethods = {
   push: function(value) {
     this.storage[this.count] = value;
-    this.count += 1
+    this.count += 1;
     return this.count;
   },
   pop: function() {
