@@ -14,12 +14,12 @@ var Stack = function() {
   };
 
   someInstance.pop = function () {
-    if (counter===0) {
+    if (counter === 0) {
       return;
     }
 
-    var result = someInstance[counter-1];
-    delete someInstance[counter-1];
+    var result = someInstance[counter - 1];
+    delete someInstance[counter - 1];
 
     counter--;
 
