@@ -25,7 +25,10 @@ var LimitedArray = function(limit) {
   };
   limitedArray.each = function(callback) {
     for (var i = 0; i < storage.length; i++) {
-      callback(storage[i], i, storage);
+      // added if statement due to occasional undefined at some indices
+      if (storage[i]){
+        callback(storage[i], i, storage);
+      }
     }
   };
 

@@ -1,6 +1,6 @@
 describe('hashTable', function() {
   var hashTable;
-  var people = [['Steven', 'Tyler'], ['George', 'Harrison'], ['Mr.', 'Doob'], ['Dr.', 'Sunshine'], ['John', 'Resig'], ['Brendan', 'Eich'], ['Alan', 'Turing']];
+  var people = [['Alex', 'Mitchell'], ['Calvin', 'Kniffin'], ['Barack', 'Obama'], ['Osama', 'Bin Laden'], ['Ragnar', 'Lothbrook'], ['Steven', 'Tyler'], ['George', 'Harrison'], ['Mr.', 'Doob'], ['Dr.', 'Sunshine'], ['John', 'Resig'], ['Brendan', 'Eich'], ['Alan', 'Turing']];
 
 
   beforeEach(function() {
@@ -48,17 +48,18 @@ describe('hashTable', function() {
   });
 
   // (Advanced! Remove the extra "x" when you want the following tests to run)
-  xit ('should double in size when needed', function() {
+  it ('should double in size when needed', function() {
     _.each(people, function(person) {
       var firstName = person[0];
       var lastName = person[1];
       hashTable.insert(firstName, lastName);
+      hashTable.insert(lastName, firstName);
       expect(hashTable.retrieve(firstName)).to.equal(lastName);
     });
     expect(hashTable._limit).to.equal(16);
   });
 
-  xit ('should halve in size when needed', function() {
+  it ('should halve in size when needed', function() {
     _.each(people, function(person) {
       var firstName = person[0];
       var lastName = person[1];
