@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf8">
+  <title>
+    Profiling Functional
+  </title>
+  <script src="../../lib/underscore/underscore.js"></script>
+</head>
+<body>
+  <script>
+    var numToMake = 100000;
+    var numTimesToTest = 100;
+  </script>
+  <script src="../src/functional/stack.js"></script>
+  <script src="../src/functional/queue.js"></script>
+  <script src="functional.js"></script>
+  <script src="profile-tests.js"></script>
+</body>
+</html>
+<!--
+creating time  functional     functional-shared      prototypal       pseudoclassical
+                 stack: 61.7   stack: 54.6            stack: 8.9       stack: 7.7
+                 queue: 61.6   queue: 59.2            queue: 4.6       queue: 1.9
+
+PUSH TIME        stack: 386     stack: 404.4           stack: 311.8     stack: 323.4
+
+POP TIME         stack: 1176.0  stack: 1051.7          stack: 1136.9    stack: 1109.5
+
+ENQUEUE          queue: 349.3   queue: 410.1           queue: 289.5     queue: 286.2
+
+DEQUEUE          queue: 2015.3  queue: 1871.7          queue: 1985.5    queue: 1985.5
+
+SIZE             stack: 20.1    stack: 18.4            stack: 18.9      stack: 20.2
+                 queue: 21.4    queue: 21.5             queue: 21.6      queue: 20.2
+-->
+
