@@ -7,7 +7,7 @@ var Graph = function() {
 
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(value) {
-  if(this.contains(value)){
+  if (this.contains(value)) {
     return;
   }
   var newNode = Node(value);
