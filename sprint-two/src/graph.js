@@ -7,6 +7,9 @@ var Graph = function() {
 
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(value) {
+  if(this.contains(value)){
+    return;
+  }
   var newNode = Node(value);
   this.nodes.push(newNode);
 };
@@ -115,6 +118,16 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ *
+ *  addNode: O(n)
+ *  contains: O(n)
+ *  removeNode: O(n^2)
+ *  hasEdge: O(n)
+ *  addEdge: O(n)
+ *  removeEdge: O(n)
+ *  forEachNode: O(n)
+ *  findNode: O(n)
+ *
  */
 
 
