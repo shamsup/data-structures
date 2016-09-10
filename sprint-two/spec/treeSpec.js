@@ -16,9 +16,24 @@ describe('tree', function() {
     expect(tree.children[0].value).to.equal(5);
   });
 
+  it('its children should have a parent that refers to it', function() {
+    tree.addChild(5);
+    expect(tree.children[0].value).to.equal(5);
+    expect(tree.children[0].parent).to.equal(tree);
+  });
+
   it('should return true for a value that the tree contains', function() {
     tree.addChild(5);
     expect(tree.contains(5)).to.equal(true);
+  });
+
+  it('should remove links between parents and children', function() {
+    tree.addChild(5);
+    expect(tree.children[0].parent).to.equal(tree);
+    var child = tree.children[0];
+    tree.children[0].removeParent();
+    expect(child.parent).to.not.exist;
+    expect(tree.contains(5)).to.equal(false);
   });
 
   it('should return false for a value that was not added', function() {
