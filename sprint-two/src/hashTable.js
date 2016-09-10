@@ -23,7 +23,7 @@ HashTable.prototype.insert = function(k, v) {
 
   if (bucket.insert(k, v)) {
     this.count++;
-  };
+  }
 };
 
 HashTable.prototype.retrieve = function(k) {
@@ -45,7 +45,7 @@ HashTable.prototype.remove = function(k) {
     this.count--;
     console.log('count: ', this.count);
     if (this._limit > this._min && this.count < 0.5 * this._max * this._limit) {
-      console.log('half the size')
+      console.log('half the size');
       this._halfSize();
     }
   }
