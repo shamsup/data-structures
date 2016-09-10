@@ -60,19 +60,27 @@ describe('hashTable', function() {
   });
 
   it ('should halve in size when needed', function() {
-    _.each(people, function(person) {
-      var firstName = person[0];
-      var lastName = person[1];
-      hashTable.insert(firstName, lastName);
-     // hashTable.insert(lastName, firstName);
-      expect(hashTable.retrieve(firstName)).to.equal(lastName);
-    });
+    // _.each(people, function(person) {
+    //   var firstName = person[0];
+    //   var lastName = person[1];
+    //   hashTable.insert(firstName, lastName);
+    // //  hashTable.insert(lastName, firstName);
+    //   expect(hashTable.retrieve(firstName)).to.equal(lastName);
+    // });
+    // expect(hashTable._limit).to.equal(16);
+    // hashTable.remove('George');
+    // hashTable.remove('Dr.');
+    // hashTable.remove('Steven');
+    // hashTable.remove('John');
+    // hashTable.remove('Mr.');
+    // expect(hashTable._limit).to.equal(8);
+    for (var i = 0; i < 17; i++) {
+      hashTable.insert(`${i}`, i);
+    }
     expect(hashTable._limit).to.equal(16);
-    hashTable.remove('George');
-    hashTable.remove('Dr.');
-    hashTable.remove('Steven');
-    hashTable.remove('John');
-    hashTable.remove('Mr.');
+    hashTable.remove('1');
+    hashTable.remove('2');
+    hashTable.remove('3');
     expect(hashTable._limit).to.equal(8);
   });
 });

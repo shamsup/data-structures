@@ -9,7 +9,7 @@ var HashTable = function() {
 };
 
 HashTable.prototype.insert = function(k, v) {
-  if (this.count > this._max * this._limit) {
+  if (this.count >= this._max * this._limit) {
     this._doubleSize();
   }
 
@@ -21,8 +21,9 @@ HashTable.prototype.insert = function(k, v) {
     this._storage.set(index, bucket);
   }
 
-  bucket.insert(k, v);
-  this.count++;
+  if (bucket.insert(k, v)) {
+    this.count++;
+  };
 };
 
 HashTable.prototype.retrieve = function(k) {
@@ -37,16 +38,20 @@ HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index);
 
-  if (bucket.remove(k)) {
+  console.log('count: ', this.count);
+
+  if (bucket && bucket.remove(k)) {
+    console.log('removed');
     this.count--;
-    if (this.count < this._max * 0.5 * this._limit && this._limit > this._min) {
+    console.log('count: ', this.count);
+    if (this._limit > this._min && this.count < 0.5 * this._max * this._limit) {
+      console.log('half the size')
       this._halfSize();
     }
   }
 };
 
 HashTable.prototype._doubleSize = function() {
-  var $this = this;
   this._limit *= 2;
   console.log('Limit:', this._limit);
   var oldBuckets = this._storage;
@@ -57,7 +62,7 @@ HashTable.prototype._doubleSize = function() {
 
 HashTable.prototype._halfSize = function () {
   debugger;
-  var $this = this;
+  console.log('rebalancing');
   this._limit = this._limit / 2;
   console.log('Limits: ', this._limit);
   var oldBuckets = this._storage;
@@ -90,7 +95,7 @@ var Bucket = function() {
     while (node) {
       if (node.key === key) {
         node.value = value;
-        return true;
+        return false;
       }
       node = node.next;
     }
@@ -159,5 +164,3 @@ var HashNode = function(key, value) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
-
-
