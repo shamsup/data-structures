@@ -1,6 +1,6 @@
 describe('hashTable', function() {
   var hashTable;
-  var people = [['Alex', 'Mitchell'], ['Calvin', 'Kniffin'], ['Barack', 'Obama'], ['Osama', 'Bin Laden'], ['Ragnar', 'Lothbrook'], ['Steven', 'Tyler'], ['George', 'Harrison'], ['Mr.', 'Doob'], ['Dr.', 'Sunshine'], ['John', 'Resig'], ['Brendan', 'Eich'], ['Alan', 'Turing']];
+  var people = [['Steven', 'Tyler'], ['George', 'Harrison'], ['Mr.', 'Doob'], ['Dr.', 'Sunshine'], ['John', 'Resig'], ['Brendan', 'Eich'], ['Alan', 'Turing']];
 
 
   beforeEach(function() {
@@ -53,34 +53,32 @@ describe('hashTable', function() {
       var firstName = person[0];
       var lastName = person[1];
       hashTable.insert(firstName, lastName);
-      hashTable.insert(lastName, firstName);
       expect(hashTable.retrieve(firstName)).to.equal(lastName);
     });
     expect(hashTable._limit).to.equal(16);
   });
 
   it ('should halve in size when needed', function() {
-    // _.each(people, function(person) {
-    //   var firstName = person[0];
-    //   var lastName = person[1];
-    //   hashTable.insert(firstName, lastName);
-    //   hashTable.insert(lastName, firstName);
-    //   expect(hashTable.retrieve(firstName)).to.equal(lastName);
-    // });
-    // expect(hashTable._limit).to.equal(16);
-    // hashTable.remove('George');
-    // hashTable.remove('Dr.');
-    // hashTable.remove('Steven');
-    // hashTable.remove('John');
-    // hashTable.remove('Mr.');
-    // expect(hashTable._limit).to.equal(8);
-    for (var i = 0; i < 17; i++) {
-      hashTable.insert(`${i}`, i);
-    }
+    _.each(people, function(person) {
+      var firstName = person[0];
+      var lastName = person[1];
+      hashTable.insert(firstName, lastName);
+      expect(hashTable.retrieve(firstName)).to.equal(lastName);
+    });
     expect(hashTable._limit).to.equal(16);
-    hashTable.remove('1');
-    hashTable.remove('2');
-    hashTable.remove('3');
+    hashTable.remove('George');
+    hashTable.remove('Dr.');
+    hashTable.remove('Steven');
+    hashTable.remove('John');
+    hashTable.remove('Mr.');
     expect(hashTable._limit).to.equal(8);
+    // for (var i = 0; i < 17; i++) {
+    //   hashTable.insert(`${i}`, i);
+    // }
+    // expect(hashTable._limit).to.equal(16);
+    // hashTable.remove('1');
+    // hashTable.remove('2');
+    // hashTable.remove('3');
+    // expect(hashTable._limit).to.equal(8);
   });
 });

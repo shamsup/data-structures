@@ -4,14 +4,11 @@ var HashTable = function() {
   this._limit = 8;
   this._storage = LimitedArray(this._limit);
   this._min = 8;
-  this._max = 2;
   this.count = 0;
 };
 
 HashTable.prototype.insert = function(k, v) {
-  if (this.count >= this._max * this._limit) {
-    this._doubleSize();
-  }
+
 
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index);
@@ -23,6 +20,10 @@ HashTable.prototype.insert = function(k, v) {
 
   if (bucket.insert(k, v)) {
     this.count++;
+  }
+
+  if (this.count >= 0.75 * this._limit) {
+    this._doubleSize();
   }
 };
 
@@ -42,7 +43,7 @@ HashTable.prototype.remove = function(k) {
 
   if (bucket && bucket.remove(k)) {
     this.count--;
-    if (this._limit > this._min && this.count < 0.5 * this._max * this._limit) {
+    if (this._limit > this._min && this.count < 0.25 * this._limit) {
       this._halfSize();
     }
   }
