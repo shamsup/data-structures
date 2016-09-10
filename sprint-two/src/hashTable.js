@@ -41,11 +41,8 @@ HashTable.prototype.remove = function(k) {
   console.log('count: ', this.count);
 
   if (bucket && bucket.remove(k)) {
-    console.log('removed');
     this.count--;
-    console.log('count: ', this.count);
     if (this._limit > this._min && this.count < 0.5 * this._max * this._limit) {
-      console.log('half the size');
       this._halfSize();
     }
   }
@@ -61,10 +58,7 @@ HashTable.prototype._doubleSize = function() {
 };
 
 HashTable.prototype._halfSize = function () {
-  debugger;
-  console.log('rebalancing');
   this._limit = this._limit / 2;
-  console.log('Limits: ', this._limit);
   var oldBuckets = this._storage;
   this._storage = LimitedArray(this._limit);
   this._rebalance(oldBuckets);
