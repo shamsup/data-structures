@@ -45,4 +45,5 @@ treeMethods.removeParent = function() {
  *
  *    addChild: O(1)
  *    contains: O(c^n)
+ *    removeParent: O(n)
  */
